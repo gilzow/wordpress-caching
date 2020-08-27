@@ -5,11 +5,3 @@ http://{all}/:
     enabled: false
   ssi:
     enabled: false
-
-https://{all}/:
-  type: upstream
-  upstream: nginx:http
-  cache:
-    enabled: false
-  ssi:
-    enabled: false

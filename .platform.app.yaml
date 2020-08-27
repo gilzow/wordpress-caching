@@ -1,8 +1,8 @@
 name: "nginx"
 type: golang:1.14
 
-relationships:
-    app: "app:http"
+# relationships:
+#     app: "app:http"
 
 hooks:
     deploy: |

@@ -1,0 +1,7 @@
+http://{all}/:
+  type: upstream
+  upstream: nginx:http
+  cache:
+    enabled: false
+  ssi:
+    enabled: false

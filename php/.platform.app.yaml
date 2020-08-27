@@ -1,0 +1,26 @@
+# 172
+name: "app"
+
+type: php:7.2
+build:
+  flavor: composer
+
+web:
+  locations:
+    "/":
+      root: "public/"
+      passthru: "/index.php"
+
+mounts:
+  "/public/media": "shared:files/media"
+  "/private": "shared:files/private"
+  "/cache": "shared:files/cache"
+
+hooks:
+  build: |
+  deploy: |
+
+relationships:
+    database: "mysqldb:mysql"
+
+disk: 1000

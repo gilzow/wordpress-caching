@@ -1,23 +1,59 @@
 # 172
 name: "app"
 
-type: php:7.2
+type: php:7.4
 build:
   flavor: composer
+
+dependencies:
+  php:
+    composer/composer: '^2'
+    wp-cli/wp-cli-bundle: "^2.4.0"
 
 web:
   locations:
     "/":
-      root: "public/"
+      # The public directory of the app, relative to its root.
+      root: "wordpress"
+      # The front-controller script to send non-static requests to.
       passthru: "/index.php"
+      # Wordpress has multiple roots (wp-admin) so the following is required
+      index:
+        - "index.php"
+      # The number of seconds whitelisted (static) content should be cached.
+      expires: 600
+      scripts: true
+      allow: true
+      rules:
+        ^/composer\.json:
+          allow: false
+        ^/license\.txt$:
+          allow: false
+        ^/readme\.html$:
+          allow: false
+    "/wp-content/cache":
+      root: "wordpress/wp-content/cache"
+      scripts: false
+      allow: false
+    "/wp-content/uploads":
+      root: "wordpress/wp-content/uploads"
+      scripts: false
+      allow: true
 
 mounts:
-  "/public/media": "shared:files/media"
-  "/private": "shared:files/private"
-  "/cache": "shared:files/cache"
+  "wordpress/wp-content/cache":
+    source: local
+    source_path: "cache"
+  "wordpress/wp-content/uploads":
+    source: local
+    source_path: "uploads"
 
 hooks:
   build: |
+    set -e
+    # Copy manually-provided plugins into the plugins directory.
+    # This allows manually-provided and composer-provided plugins to coexist.
+    rsync -a plugins/* wordpress/wp-content/plugins/
   deploy: |
 
 relationships:

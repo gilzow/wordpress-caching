@@ -1,4 +1,4 @@
-http://{all}/:
+https://{all}/:
   type: upstream
   upstream: nginx:http
   cache:

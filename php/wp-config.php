@@ -48,7 +48,8 @@ if ($config->isValidPlatform()) {
 			$routes = $config->routes();
 
 			foreach ($routes as $url => $route) {
-				if ($route['type'] === 'upstream' && $route['upstream'] === $config->applicationName) {
+				#if ($route['type'] === 'upstream' && $route['upstream'] === $config->applicationName) {
+                if ($route['type'] === 'upstream' && $route['upstream'] === 'nginx') {
 
 					// Pick the first hostname, or the first HTTPS hostname if one exists.
 					$host = parse_url($url, PHP_URL_HOST);

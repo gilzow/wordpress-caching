@@ -112,6 +112,9 @@ define( 'WP_AUTO_UPDATE_CORE', false );
 // Since you can have multiple installations in one database, you need a unique
 // prefix.
 $table_prefix  = 'wp_';
+#WP_ROCKET CACHING CONSTANTS
+define('WP_ROCKET_CONFIG_PATH',WP_CONTENT_DIR . DIRECTORY_SEPARATOR.'cache-config'.DIRECTORY_SEPARATOR);
+
 
 // Default PHP settings.
 ini_set('session.gc_probability', 1);

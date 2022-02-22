@@ -113,6 +113,7 @@ define( 'WP_AUTO_UPDATE_CORE', false );
 // prefix.
 $table_prefix  = 'wp_';
 #WP_ROCKET CACHING CONSTANTS
+define( 'WP_CACHE', true );
 define('WP_ROCKET_CONFIG_PATH',WP_CONTENT_DIR . DIRECTORY_SEPARATOR.'cache-config'.DIRECTORY_SEPARATOR);
 
 

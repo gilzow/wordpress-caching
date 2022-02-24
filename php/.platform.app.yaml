@@ -35,6 +35,9 @@ web:
       root: "wordpress/wp-content/cache"
       scripts: false
       allow: false
+      rules:
+        '\.html$'
+        allow: true
     "/wp-content/uploads":
       root: "wordpress/wp-content/uploads"
       scripts: false

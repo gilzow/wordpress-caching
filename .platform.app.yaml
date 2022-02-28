@@ -14,6 +14,10 @@ hooks:
 mounts:
   "/conf": "shared:files/conf"
   "/log": "shared:files/log"
+  "www/wp-content/cache":
+      source: service
+      service: sharedcache
+      source_path: "cache"
 
 web:
     upstream:

@@ -45,7 +45,8 @@ web:
 
 mounts:
   "wordpress/wp-content/cache":
-    source: local
+    source: service
+    service: sharedcache
     source_path: "cache"
   "wordpress/wp-content/cache-config":
     source: local
